@@ -1,0 +1,13 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+
+    .title {
+        font-weight: 600;
+        font-size: larger;
+    }
+
+    .form-container {
+        margin-bottom: 10px;
+    }
+}
