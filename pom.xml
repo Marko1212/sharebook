@@ -16,7 +16,7 @@
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
-		<frontend-plugin-plugin.version>1.12.0</frontend-plugin-plugin.version>
+		<frontend-plugin-plugin.version>1.12.1</frontend-plugin-plugin.version>
 		<node.version>v16.13.1</node.version>
 		<npm.version>8.10.0</npm.version>
 		<frontend-src-dir>frontend-sharebook/my-app</frontend-src-dir>
