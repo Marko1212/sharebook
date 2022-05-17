@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Redirect, useHistory } from 'react-router-dom';
+import { BrowserRouter, Route, useHistory } from 'react-router-dom';
 import React from 'react';
 import ListBooks from './ListBooks';
 import MyBooks from './MyBooks';
