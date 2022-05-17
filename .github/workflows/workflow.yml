@@ -12,13 +12,13 @@ env:
   AZURE_WEBAPP_PUBLISH_PROFILE: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
 
 jobs:
+  steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '14.x'
   build-and-deploy:
     name: Build and Deploy
     runs-on: ubuntu-latest
-    steps:
-      - task: NodeTool@0
-        inputs:
-          versionSpec: '14.x'
       - uses: actions/checkout@master
       - name: Set up JDK
         uses: actions/setup-java@v1
