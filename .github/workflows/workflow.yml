@@ -1,13 +1,13 @@
-- task: NodeTool@0
-  inputs:
-    versionSpec: '14.x'
-
 name: Deploy Java app to Azure Web App
 
 on:
   push:
     branches:
       - master
+
+- task: NodeTool@0
+  inputs:
+    versionSpec: '14.x'
 
 env:
   AZURE_WEBAPP_NAME: share-book
