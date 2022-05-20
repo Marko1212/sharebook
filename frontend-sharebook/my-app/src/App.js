@@ -1,78 +1,88 @@
-import { BrowserRouter, Route, useHistory } from 'react-router-dom';
-import React from 'react';
-import ListBooks from './ListBooks';
-import MyBooks from './MyBooks';
-import AddBook from './AddBook';
-import MyBorrows from './MyBorrows';
-import Login from './Login';
-import AddUser from './AddUser';
-import Header from './Header';
-import { useState, useEffect } from 'react';
+import React from 'react'
+import { Route, Routes, useNavigate, useLocation } from 'react-router-dom'
 import axios from 'axios';
+import AddBook from './AddBook';
+import AddUser from './AddUser';
+import ListBooks from './ListBooks'
+import MyBooks from './MyBooks'
+import Login from './Login'
+import Header from './Header'
+import MyBorrows from './MyBorrows'
+import { useEffect, useState } from "react";
+import Spinner from 'react-bootstrap/Spinner'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+
+import './App.scss'
 
 const UserConnected = ({ setUserInfo, userInfo }) => {
-  const history = useHistory();
-  useEffect(() => {
-    axios.get('/isConnected').then(response => {
-      if (history.location.pathname === "/") {
-        history.push("/listBooks")
-      }
-      else {
-        history.push(history.location.pathname)
-      }
+  const history = useNavigate();
+  let location = useLocation();
 
+  React.useEffect(() => {
+    setUserInfo(null)
+    axios.get('/isConnected').then(response => {
       setUserInfo(response.data)
     }, () => {
-      console.error('user unknown')
-      history.push("/login")
-      setUserInfo(null)
+      if (!location.pathname === '/addUser') {
+        history("/login")
+      }
     })
-  }, [history, setUserInfo]);
+  }, [history, setUserInfo, location.pathname]);
 
   return (<>
     {userInfo && <Header userInfo={userInfo} setUserInfo={setUserInfo} />}
-  </>
-  )
+  </>)
 }
-
-
 function App() {
+
+  const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    axios.interceptors.request.use(function (request) {
+      setLoading(true)
+      return request
+    }, (error) => {
+      setLoading(false)
+      return Promise.reject(error);
+    });
+
+    axios.interceptors.response.use(function (response) {
+      setLoading(false)
+      return response;
+    }, (error) => {
+      setLoading(false)
+      return Promise.reject(error);
+    });
+
+  })
+
 
   const [userInfo, setUserInfo] = React.useState('');
 
   return (
     <div>
-      <BrowserRouter>
-        <div className="container">
-          <UserConnected userInfo={userInfo} setUserInfo={setUserInfo} />
-          <Route path="/listBooks">
-            <ListBooks />
-          </Route>
-          <Route path="/myBooks">
-            <MyBooks />
-          </Route>
-          <Route exact path="/addBook/:bookId">
-            <AddBook />
-          </Route>
-          <Route exact path="/addBook">
-            <AddBook />
-          </Route>
-          <Route path="/myBorrows">
-            <MyBorrows />
-          </Route>
-          <Route path="/login">
-            <Login setUserInfo={setUserInfo} />
-          </Route>
-          <Route path="/addUser">
-            <AddUser setUserInfo={setUserInfo} />
-          </Route>
-        </div>
-      </BrowserRouter>
+
+    {loading && (
+            <div className="background-spinner">
+              <div className="spinner">
+                <Spinner animation="grow" variant="light" />
+              </div>
+            </div>
+          )}
+      <UserConnected userInfo={userInfo} setUserInfo={setUserInfo} />
+      <div className="App">
+        <Routes>
+          <Route path="listBooks" element={<ListBooks />} />
+          <Route path="myBooks" element={<MyBooks />} />
+          <Route path="addBook" element={<AddBook />} />
+          <Route path="addBook/:bookId" element={<AddBook />} />
+          <Route path="myBorrows" element={<MyBorrows />} />
+          <Route path="addUser" element={<AddUser setUserInfo={setUserInfo} />} />
+          <Route path="*" element={<Login setUserInfo={setUserInfo} />} />
+        </Routes>
+      </div>
     </div>
   );
-  }
-
+}
 export default App;

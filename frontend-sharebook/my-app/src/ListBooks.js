@@ -1,7 +1,7 @@
 import React from 'react';
 import Book from "./Book.js";
 import axios from 'axios';
-import {withRouter} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import "./MyBooks.scss";
 import "./ListBooks.scss";
@@ -45,4 +45,8 @@ class ListBooks extends React.Component {
     }
 }
 
-export default withRouter(ListBooks); 
+// Wrap and export
+export default function Wrapper(props) {
+    const history = useNavigate();
+    return <ListBooks {...props} history={history} />;
+  }

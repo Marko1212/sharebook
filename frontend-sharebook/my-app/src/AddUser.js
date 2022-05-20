@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './AddUser.scss';
 import SimpleModal from './SimpleModal';
 
@@ -77,4 +77,8 @@ class AddUser extends React.Component {
 
 }
 
-export default withRouter(AddUser);
+// Wrap and export
+export default function Wrapper(props) {
+    const history = useNavigate();
+    return <AddUser {...props} history={history} />;
+  }

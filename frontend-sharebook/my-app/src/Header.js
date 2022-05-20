@@ -1,11 +1,11 @@
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 export default function Header({userInfo, setUserInfo}) {
-    const history = useHistory();
+    const navigate = useNavigate();
     const signout = () => {
         axios.post('/logout').then(response => {
-            history.push('/login');
+            navigate('/login');
             setUserInfo(null);
         })
     }

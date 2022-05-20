@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from './logo.jpg';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Login.scss';
 import SimpleModal from './SimpleModal';
@@ -75,4 +75,8 @@ class Login extends React.Component {
 
 }
 
-export default withRouter(Login)
+// Wrap and export
+export default function Wrapper(props) {
+    const history = useNavigate();
+    return <Login {...props} history={history} />;
+}

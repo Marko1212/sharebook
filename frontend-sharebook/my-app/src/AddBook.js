@@ -1,4 +1,4 @@
-import { useParams, useHistory } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -13,7 +13,7 @@ export default function AddBook() {
         categoryId: ''
     });
     const [categoriesData, setCategoriesData] = useState([]);
-    const history = useHistory();
+    const navigate = useNavigate();
 
     useEffect(() => {
         axios.get('/categories').then(response => {
@@ -48,7 +48,7 @@ export default function AddBook() {
                 ...bookData
             }).then(() => {
                 // rediriger vers myBooks
-                history.push('/myBooks');
+                navigate('/myBooks');
             })
 
         } else {
@@ -57,7 +57,7 @@ export default function AddBook() {
                 ...bookData
             }).then(() => {
                 // rediriger vers myBooks
-                history.push('/myBooks');
+                navigate('/myBooks');
             })
         }
     }

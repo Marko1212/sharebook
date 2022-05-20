@@ -1,6 +1,6 @@
 import Book from "./Book.js";
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import "./MyBooks.scss";
 import SimpleModal from './SimpleModal';
@@ -9,7 +9,7 @@ const MyBooks = () => {
 
     const [myBooks, setMyBooks] = React.useState([]);
     const [showModal, setShowModal] = React.useState(false);
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const fetchBooks = () => {
         axios.get("/books").then(response => {
@@ -42,7 +42,7 @@ const MyBooks = () => {
                         <div key={book.id} className="mybook-container">
                             <Book title={book.title} category={book.category.label} />
                             <div className="container-buttons">
-                                <button className="btn btn-primary btn-sm" onClick={() => history.push(`/addBook/${book.id}`)}>Modifier</button>
+                                <button className="btn btn-primary btn-sm" onClick={() => navigate(`/addBook/${book.id}`)}>Modifier</button>
                                 <button className="btn btn-primary btn-sm" type="button" onClick={() => handleDelete(book.id)}>Supprimer</button>
                             </div>
                         </div>
