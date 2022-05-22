@@ -23,7 +23,7 @@ class ListBooks extends React.Component {
 
     borrowBook(bookId) {
         axios.post(`/borrows/${bookId}`, {}).then(() => {
-            this.props.history.push('/myBorrows');           
+            this.props.history('/myBorrows');           
         });
     }
 

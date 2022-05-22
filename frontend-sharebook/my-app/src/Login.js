@@ -29,7 +29,7 @@ class Login extends React.Component {
             password: this.state.userData.password
         }).then((response) => {
             this.props.setUserInfo(response.data.userName)
-            this.props.history.push('/listBooks')
+            this.props.history('/listBooks')
         }).catch(() => {
             this.setState({showModal: true})
         });
