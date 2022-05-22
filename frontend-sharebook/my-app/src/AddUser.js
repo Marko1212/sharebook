@@ -28,7 +28,7 @@ class AddUser extends React.Component {
         }).then(response => {
             this.props.setUserInfo(response.data.firstName + " " + response.data.lastName);
             this.props.history.push("/listBooks");
-        }).catch(error => {
+        }).catch(() => {
             this.setState({ showModal: true })
         })
     }
