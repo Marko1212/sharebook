@@ -68,6 +68,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				"/manifest.json",
                 "/favicon.ico",
                 "/logo192.png",
+				"/swagger-ui.html",
                 "/webjars/**");
     }
 
