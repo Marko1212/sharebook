@@ -62,7 +62,7 @@
 			<artifactId>jjwt</artifactId>
 			<version>0.9.1</version>
 		</dependency>
-				<!-- VAULT -->
+			<!-- VAULT -->
 		<dependency>
 			<groupId>com.azure.spring</groupId>
 			<artifactId>azure-spring-boot-starter-keyvault-secrets</artifactId>
@@ -72,6 +72,18 @@
 			<artifactId>azure-identity</artifactId>
 		</dependency>
 	</dependencies>
+
+			<!-- ORACLE DB -->
+	<dependency>
+			<groupId>com.oracle.database.jdbc</groupId>
+			<artifactId>ojdbc8</artifactId>
+			<version>21.1.0.0</version>
+	</dependency>
+	<dependency>
+			<groupId>com.oracle.database.jdbc</groupId>
+			<artifactId>ucp</artifactId>
+			<version>21.1.0.0</version>
+	</dependency>
 
 	<build>
 		<plugins>
