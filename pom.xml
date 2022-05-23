@@ -71,19 +71,20 @@
 			<groupId>com.azure</groupId>
 			<artifactId>azure-identity</artifactId>
 		</dependency>
-	</dependencies>
 
-			<!-- ORACLE DB -->
-	<dependency>
+					<!-- ORACLE DB -->
+		<dependency>
 			<groupId>com.oracle.database.jdbc</groupId>
 			<artifactId>ojdbc8</artifactId>
 			<version>21.1.0.0</version>
-	</dependency>
-	<dependency>
+		</dependency>
+		<dependency>
 			<groupId>com.oracle.database.jdbc</groupId>
 			<artifactId>ucp</artifactId>
 			<version>21.1.0.0</version>
-	</dependency>
+		</dependency>
+	</dependencies>
+
 
 	<build>
 		<plugins>
