@@ -8,7 +8,7 @@ import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 
 @Entity
-public class User {
+public class UserInfo {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,11 +27,11 @@ public class User {
 	@Transient
 	private String token;
 
-	public User() {
+	public UserInfo() {
 
 	}
 
-	public User(String email) {
+	public UserInfo(String email) {
 		super();
 		this.email = email;
 	}

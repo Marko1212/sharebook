@@ -18,7 +18,7 @@ import com.udemy.demo.book.Book;
 import com.udemy.demo.book.BookController;
 import com.udemy.demo.book.BookRepository;
 import com.udemy.demo.book.BookStatus;
-import com.udemy.demo.user.User;
+import com.udemy.demo.user.UserInfo;
 import com.udemy.demo.user.UserRepository;
 
 @RestController
@@ -44,7 +44,7 @@ public class BorrowController {
 	@PostMapping("/borrows/{bookId}")
 	public ResponseEntity createBorrow(@PathVariable("bookId") String bookId, Principal principal) {
 		Integer userConnectedId = BookController.getUserConnectedId(principal);
-		Optional<User> borrower = userRepository.findById(Integer.valueOf(userConnectedId));
+		Optional<UserInfo> borrower = userRepository.findById(Integer.valueOf(userConnectedId));
 		Optional<Book> book = bookRepository.findById(Integer.valueOf(bookId));
 
 		if (borrower.isPresent() && book.isPresent() && book.get().getBookStatus().equals(BookStatus.FREE)) {

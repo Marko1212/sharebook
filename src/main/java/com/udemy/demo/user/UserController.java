@@ -31,9 +31,9 @@ public class UserController {
 	private JwtUtils jwtUtils;
 
 	@PostMapping(value = "users")
-	public ResponseEntity addUser(@RequestBody @Valid User user, HttpServletResponse response) {
+	public ResponseEntity addUser(@RequestBody @Valid UserInfo user, HttpServletResponse response) {
 
-		List<User> users = userRepository.findByEmail(user.getEmail());
+		List<UserInfo> users = userRepository.findByEmail(user.getEmail());
 
 		if (!users.isEmpty()) {
 			return new ResponseEntity("User already existing", HttpStatus.BAD_REQUEST);

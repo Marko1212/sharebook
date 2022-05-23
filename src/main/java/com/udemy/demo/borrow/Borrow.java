@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 import com.udemy.demo.book.Book;
-import com.udemy.demo.user.User;
+import com.udemy.demo.user.UserInfo;
 
 @Entity
 public class Borrow {
@@ -19,10 +19,10 @@ public class Borrow {
 	private int id;
 	
 	@ManyToOne
-	private User borrower;
+	private UserInfo borrower;
 	
 	@ManyToOne
-	private User lender;
+	private UserInfo lender;
 	
 	@ManyToOne
 	private Book book;
@@ -48,16 +48,16 @@ public class Borrow {
 	public void setCloseDate(LocalDate closeDate) {
 		this.closeDate = closeDate;
 	}
-	public User getBorrower() {
+	public UserInfo getBorrower() {
 		return borrower;
 	}
-	public void setBorrower(User borrower) {
+	public void setBorrower(UserInfo borrower) {
 		this.borrower = borrower;
 	}
-	public User getLender() {
+	public UserInfo getLender() {
 		return lender;
 	}
-	public void setLender(User lender) {
+	public void setLender(UserInfo lender) {
 		this.lender = lender;
 	}
 	public Book getBook() {
