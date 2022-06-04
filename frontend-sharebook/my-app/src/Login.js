@@ -31,12 +31,12 @@ class Login extends React.Component {
             this.props.setUserInfo(response.data.userName)
             this.props.history('/listBooks')
         }).catch(() => {
-            this.setState({showModal: true})
+            this.setState({ showModal: true })
         });
     }
 
     handleCloseModal() {
-        this.setState({showModal: false})
+        this.setState({ showModal: false })
     }
 
     render() {
@@ -56,9 +56,9 @@ class Login extends React.Component {
                         </div>
                         <div className="form-container">
                             <form onSubmit={this.onSubmit}>
-                                <span>Email: </span>
+                                <span>Email :</span>
                                 <input type="email" className="form-control" name="email" onChange={this.handleChange} />
-                                <span>Password: </span>
+                                <span>Mot de passe :</span>
                                 <input type="password" className="form-control" name="password" onChange={this.handleChange} />
                                 <div>
                                     <input type="submit" className="btn btn-primary mt-3" value="OK" />
@@ -68,7 +68,7 @@ class Login extends React.Component {
                         <div><Link to="/addUser">M'inscrire</Link></div>
                     </div>
                 </div>
-                <SimpleModal title = {title} bodyTxt = {bodyTxt} handleCloseModal = {this.handleCloseModal} showModal = {this.state.showModal} />
+                <SimpleModal title={title} bodyTxt={bodyTxt} handleCloseModal={this.handleCloseModal} showModal={this.state.showModal} />
             </>
         )
     }

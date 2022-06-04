@@ -54,7 +54,7 @@ class AddUser extends React.Component {
                                     <input name="firstName" type="text" className="form-control" onChange={this.handleChange} />
                                 </div>
                                 <div>
-                                    <label>Password</label>
+                                    <label>Mot de passe</label>
                                     <input name="password" type="password" className="form-control" onChange={this.handleChange} />
                                 </div>
                                 <div className="container-valid text-center">
